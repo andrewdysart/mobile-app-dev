@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <title>First Event</title>
+        <meta charset="utf-8">
+        <script>
+            /*
+        Input:
+        Processing:
+        Output:
+        */
+            "use strict";
+            function showCongratulations(theButtonClicked) {
+                document.getElementById("result_display").innerHTML = "Congratulations, you did it!<p>You got the page to update!</p>";
+                theButtonClicked.innerHTML = "Click Me Again!";
+            }
+        </script>
+
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+       <button onclick="showCongratulations(this)">Click Me!</button>
+        <section id="result_display"></section>
+    </body>
+
+</html>
