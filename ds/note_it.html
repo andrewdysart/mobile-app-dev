@@ -21,11 +21,61 @@
 				allNotes.push(aCompleteNote);
 				var allNotesString = JSON.stringify(allNotes);
 				localStorage.setItem("all_notes", allNotesString);
+				showAllNotes();
+//				The next two lines use more resources than necessary. Try to accomplish this some other way!
+				document.getElementById("description_input").value = null;
+				document.getElementById("note_editor").value = null;
+			}
+
+			function showAllNotes() {
+				var storedNotesString = localStorage.getItem("all_notes");
+				var allNotes = JSON.parse(storedNotesString);
+				if (allNotes != null) {
+					var noteDisplayer = document.getElementById("all_notes_display");
+					noteDisplayer.innerHTML = null;
+					var numOfNotes = allNotes.length;
+					for (var i = 0; i < numOfNotes; i++) {
+						var aNote = allNotes[i];
+						noteDisplayer.innerHTML += "<hr><p>" + aNote + "</p>";
+					}
+				}
 			}
 		</script>
 
 		<style>
-
+			body {
+				background-color: lightgray;
+			}
+			input {
+				border: none;
+				border-radius: 5px;
+				box-shadow: 0px 0px 5px #666666 inset;
+				height: 25px;
+				width: 200px;
+				text-indent: 5px;
+			}
+			input:focus {
+				outline: none;
+			}
+			#note_entry_area {
+				width: 500px;
+				padding-left: 5px;
+				border: none;
+				border-radius: 5px;
+				box-shadow: 0px 0px 5px #666666 inset;
+				text-indent: 5px;
+			}
+			textarea {
+				margin-top: 10px;
+				border: none;
+				border-radius: 5px;
+				box-shadow: 0px 0px 5px #666666 inset;
+				width: 90%;
+				height: 150px;
+				text-indent: 5px;
+				resize: none;
+				overflow-y: scroll;
+			}
 		</style>
 	</head>
 
