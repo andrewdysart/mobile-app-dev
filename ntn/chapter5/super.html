@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+	<head>
+		<title>Object Properties</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script>
+			"use strict";
+			const superman = {
+				name: 'Superman',
+				'real name': 'Clark Kent',
+				height: 75,
+				weight: 235,
+				hero: true,
+				villain: false,
+				allies: ['Batman','Supergirl','Superboy'],
+				fly() {
+					return 'Up, up and away!';
+				}
+			};
+
+			const name = 'Iron Man';
+			const realName = 'Tony Stark';
+			const ironMan = { name, realName };
+
+			function doStuff() {
+				document.write(superman.name + "<br>");
+				document.write(superman.hero + "<br>");
+				document.write(superman.fly() + "<br>");
+				document.write(ironMan.name + "<br>");
+				console.log("All object properties have been accessed successfully!");
+			}
+		</script>
+
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+		<button type="button" onclick="doStuff()">Access Object Properties</button>
+<!--		<div id="output"></div>-->
+	</body>
+
+</html>
