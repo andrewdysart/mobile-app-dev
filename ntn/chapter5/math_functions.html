@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+	<head>
+		<title>Math Functions</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--		<link rel="stylesheet" href=".css">-->
+
+		<script>
+			// I've never seen Math.trunc before this. Could be useful.
+			function truncNum() {
+				let x = document.getElementById("input1").value;
+				document.getElementById("output1").innerHTML = Math.trunc(x);
+			}
+
+			function hypotenuse() {
+				let x = document.getElementById("leg1").value;
+				let y = document.getElementById("leg2").value;
+				document.getElementById("output2").innerHTML = "Leg 1: " + x  + "<br>Leg 2: " + y + "<br>Hypotenuse: " + Math.hypot(x,y);
+			}
+		</script>
+
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+		Input a float: <input type="number" id="input1">
+		<button type="button" onclick="truncNum()">Trunc</button>
+		<div id="output1"></div><br>
+		Input two numbers (legs of a triangle): <input type="text" id="leg1">
+		<input type="text" id="leg2">
+		<button type="button" onclick="hypotenuse()">Get Hypotenuse</button>
+		<div id="output2"></div>
+	</body>
+
+</html>

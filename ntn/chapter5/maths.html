@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+	<head>
+		<title>Custom Math Object</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--		<link rel="stylesheet" href=".css">-->
+
+		<script>
+			const myMaths = {
+				square(x) {
+					return x * x;
+				},
+//				mean (array, callback) {
+//					if (callback) {
+//						array.map (callback);
+//					}
+//					const total = array.reduce((a,b) => a + b);
+//					return total / array.length;
+//				}
+
+			};
+
+			function displaySquare() {
+				let num = document.getElementById("squared").value;
+				document.getElementById("output1").innerHTML = "myMaths.square(<i>your number</i>) = " + myMaths.square(num);
+			}
+
+//			function displayMean() {
+//				let array = document.getElementById("mean").value;
+//				document.getElementById("output2").innerHTML = "myMaths.mean(<i>your array</i>) = " + myMaths.mean(array);
+//			}
+		</script>
+
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+		Input a number: <input type="number" id="squared">
+		<button type="button" onclick="displaySquare()">Go</button>
+		<p id="output1"></p>
+<!--
+		Input an array of numbers (Ex. [1,2,3]): <input type="text" id="mean">
+		<button type="button" onclick="displayMean()">Go</button>
+		<p id="output2"></p>
+-->
+	</body>
+
+</html>

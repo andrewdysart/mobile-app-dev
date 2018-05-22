@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+	<head>
+		<title>Dice Roll</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script>
+			"use strict";
+			const dice = {
+				sides: 6,
+				roll: function() {
+					document.getElementById("output").innerHTML = Math.floor(this.sides * Math.random()) + 1;
+				}
+			}
+		</script>
+
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+		<button type="button" onclick="dice.roll()">Roll the Dice!</button>
+		<div id="output"></div>
+	</body>
+
+</html>

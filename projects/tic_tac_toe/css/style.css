@@ -1,0 +1,55 @@
+body {
+    margin: 0px;
+    padding 0px;
+}
+
+/*
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+*/
+
+#game_board {
+    line-height: 0;
+}
+
+#game_board button {
+    border-style: solid;
+    border-color: #000000;
+    background-color: #ffffff;
+    color: #ffffff;
+    width: 1.3em;
+}
+
+#game_board #TL,
+#game_board #CL,
+#game_board #BL {
+    border-left-style: none;
+}
+
+#game_board #BL,
+#game_board #BC,
+#game_board #BR {
+    border-bottom-style: none;
+}
+
+#game_board #BR,
+#game_board #CR,
+#game_board #TR {
+    border-right-style: none;
+}
+
+#game_board #TR,
+#game_board #TC,
+#game_board #TL {
+    border-top-style: none;
+}
+
+/*Remove later*/
+* {
+    font-size: 1.5em;
+}
