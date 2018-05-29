@@ -1,4 +1,7 @@
-// Current objective: Make the code interact fully with the html.
+//Current objective: Debug so that all markers appear on the board.
+
+//Error: If the cpu plays in the same place as the player, the cpu will overwrite the player. The cpu consistently plays either in the same place as the player or a place where it previously played, overwriting either the player or itself.
+
 
 
 // HTML Objects
@@ -57,7 +60,8 @@ function mainGameLoop() {
 // Assuming an onclick function has occured
 function playerMove(id) {
     const SPOT = document.getElementById(id);
-    if (SPOT.innerHTML == "_") {
+    console.log(SPOT.innerHTML); // Shows what the spot on the board contains prior to play (hopefully an underscore).
+    if (SPOT.innerHTML == "_") { // !(SPOT.innerHTML == "O" || SPOT.innerHTML == "X")
         console.log("Player has placed a marker in " + id);
 
         // Overwrite the default underscore with the player's icon
@@ -65,6 +69,8 @@ function playerMove(id) {
 
         // Overwrite the default white font color (used to hide the underscore) with black
         SPOT.style.color = "#000000";
+
+        //  I HAVE COMMENTED OUT THE PREVIOUS TWO LINES BECAUSE I WANT TO TRY TO MAKE THE UPDATEBOARD FUNCTION UNIVERSAL AND MORE USEFUL. IT WILL HANDLE ALL THE SYMBOLS; NOT JUST THE COMPUTER'S.
 
         // Use a switch statement to input the value into the 2d array
         switch (id) {
@@ -96,6 +102,7 @@ function playerMove(id) {
                 boardArray[2][2] = "X";
                 break;
         }
+        //        console.log(boardArray);
     }
 
     // If the player or computer has already placed a marker in this spot, end the function there to stop the computer from playing.
@@ -116,7 +123,7 @@ function compTest() {
         do {
             i = Math.floor(Math.random() * 3);
             j = Math.floor(Math.random() * 3);
-        } while (!(boardArray[i][j] == "_"));
+        } while (!(boardArray[i][j] == "_")); // !(boardArray[i][j] == "_" || boardArray[i][j] == "X")        boardArray[i][j] == "_" && !(boardArray[i][j] == "X" || boardArray[i][j] == "O")
 
         // Remove later
         console.log("Computer has placed a marker at " + i + ", " + j);
@@ -244,7 +251,7 @@ function checkDiagonals() {
 }
 
 // This function only exists for the CPU. When the CPU plays, it puts a value in the array, and then the game board that the user sees must be updated based off of the array using this function.
-function updateBoard() {
+function updateBoard() { // updateBoard(i, j)
     let i;
     let j;
     for (i = 0; i < 3; i++) {
@@ -255,6 +262,120 @@ function updateBoard() {
             }
         }
     }
+
+    //    if (i == 0 && j == 0) {
+    //        TL.innerHTML = "O";
+    //        TL.style.color = "#000000";
+    //    }
+    //    if (i == 0 && j == 1) {
+    //        TC.innerHTML = "O";
+    //        TC.style.color = "#000000";
+    //    }
+    //    if (i == 0 && j == 2) {
+    //        TR.innerHTML = "O";
+    //        TR.style.color = "#000000";
+    //    }
+    //    if (i == 1 && j == 0) {
+    //        CL.innerHTML = "O";
+    //        CL.style.color = "#000000";
+    //    }
+    //    if (i == 1 && j == 1) {
+    //        CC.innerHTML = "O";
+    //        CC.style.color = "#000000";
+    //    }
+    //    if (i == 1 && j == 2) {
+    //        CR.innerHTML = "O";
+    //        CR.style.color = "#000000";
+    //    }
+    //    if (i == 2 && j == 0) {
+    //        BL.innerHTML = "O";
+    //        BL.style.color = "#000000";
+    //    }
+    //    if (i == 2 && j == 1) {
+    //        BC.innerHTML = "O";
+    //        BC.style.color = "#000000";
+    //    }
+    //    if (i == 2 && j == 2) {
+    //        BR.innerHTML = "O";
+    //        BR.style.color = "#000000";
+    //    }
+
+    // THE ISSUE IS WITH THIS SWITCH ARGUMENT. I'M NOT SURE HOW IT'S SUPPOSED TO WORK.
+    // Now the break statements are making it so that only one mark is shown, so I've commented out the X marks.
+    //    switch (true) {
+    ////        case boardArray[0][0] == "X":
+    ////            TL.innerHTML = "X";
+    ////            TL.style.color = "#000000";
+    ////            break;
+    //        case boardArray[0][0] == "O":
+    //            TL.innerHTML = "O";
+    //            TL.style.color = "#000000";
+    //            break;
+    ////        case boardArray[0][1] == "X":
+    ////            TC.innerHTML = "X";
+    ////            TC.style.color = "#000000";
+    ////            break;
+    //        case boardArray[0][1] == "O":
+    //            TC.innerHTML = "O";
+    //            TC.style.color = "#000000";
+    //            break;
+    ////        case boardArray[0][2] == "X":
+    ////            TR.innerHTML = "X";
+    ////            TR.style.color = "#000000";
+    ////            break;
+    //        case boardArray[0][2] == "O":
+    //            TR.innerHTML = "O";
+    //            TR.style.color = "#000000";
+    //            break;
+    ////        case boardArray[1][0] == "X":
+    ////            CL.innerHTML = "X";
+    ////            CL.style.color = "#000000";
+    ////            break;
+    //        case boardArray[1][0] == "O":
+    //            CL.innerHTML = "O";
+    //            CL.style.color = "#000000";
+    //            break;
+    ////        case boardArray[1][1] == "X":
+    ////            CC.innerHTML = "X";
+    ////            CC.style.color = "#000000";
+    ////            break;
+    //        case boardArray[1][1] == "O":
+    //            CC.innerHTML = "O";
+    //            CC.style.color = "#000000";
+    //            break;
+    ////        case boardArray[1][2] == "X":
+    ////            CR.innerHTML = "X";
+    ////            CR.style.color = "#000000";
+    ////            break;
+    //        case boardArray[1][2] == "O":
+    //            CR.innerHTML = "O";
+    //            CR.style.color = "#000000";
+    //            break;
+    ////        case boardArray[2][0] == "X":
+    ////            BL.innerHTML = "X";
+    ////            BL.style.color = "#000000";
+    ////            break;
+    //        case boardArray[2][0] == "O":
+    //            BL.innerHTML = "O";
+    //            BL.style.color = "#000000";
+    //            break;
+    ////        case boardArray[2][1] == "X":
+    ////            BC.innerHTML = "X";
+    ////            BC.style.color = "#000000";
+    ////            break;
+    //        case boardArray[2][1] == "O":
+    //            BC.innerHTML = "O";
+    //            BC.style.color = "#000000";
+    //            break;
+    ////        case boardArray[2][2] == "X":
+    ////            BR.innerHTML = "X";
+    ////            BR.style.color = "#000000";
+    ////            break;
+    //        case boardArray[2][2] == "O":
+    //            BR.innerHTML = "O";
+    //            BR.style.color = "#000000";
+    //            break;
+    //    }
 }
 
 function checkPlayerWin() {
@@ -360,7 +481,6 @@ function checkCompWin() {
         if (boardArray[i][j] == "O")
             o++;
     }
-
     // If three in a row, cpu wins. Otherwise, reset the variable.
     if (o == 3)
         return true;
@@ -376,6 +496,7 @@ function checkBoardFull() {
                 blanks++;
         }
     }
+    //    console.log("Number of blanks remaining: " + blanks);
     if (blanks == 0)
         return true;
     else
