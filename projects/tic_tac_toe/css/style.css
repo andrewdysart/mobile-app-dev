@@ -3,7 +3,6 @@ body {
     padding 0px;
 }
 
-/*
 .show {
     display: block;
 }
@@ -11,7 +10,6 @@ body {
 .hide {
     display: none;
 }
-*/
 
 #game_board {
     line-height: 0;
@@ -23,8 +21,10 @@ body {
     background-color: #ffffff;
     color: #ffffff;
     width: 1.3em;
+    font-size: 2em;
 }
 
+/*Style the game board button borders to look like a tic-tac-toe board*/
 #game_board #TL,
 #game_board #CL,
 #game_board #BL {
@@ -47,9 +47,4 @@ body {
 #game_board #TC,
 #game_board #TL {
     border-top-style: none;
-}
-
-/*Remove later*/
-* {
-    font-size: 1.5em;
 }

@@ -1,5 +1,13 @@
-// Current objective: Make the code interact fully with the html.
+// Current objective: Build the buttons to navigate the different html "pages." THEN, find out how to save and load player and cpu scores to local memory, and create the variables. THEN, get the touch events working for mobile.
 
+// Table of Contents
+// 1. Variables
+// 2. Background
+// 3. Gameplay
+
+/****************************************************************
+ 1. Variables
+ ***************************************************************/
 
 // HTML Objects
 let TL = document.getElementById("TL"),
@@ -29,15 +37,36 @@ let boardArray = [["_", "_", "_"], ["_", "_", "_"], ["_", "_", "_"]];
 //BC.addEventListener("touchend", playerMove());
 //BR.addEventListener("touchend", playerMove());
 
+/****************************************************************
+ 2. Background
+ ***************************************************************/
+
+function startGame() {
+    document.getElementById("title_screen").setAttribute("class", "hide");
+    document.getElementById("game_board").setAttribute("class", "show");
+}
+
+/****************************************************************
+ 3. Gameplay
+ ***************************************************************/
+
 function mainGameLoop() {
     // After the player has played, check to see if the player has won or if the board is full.
     if (checkPlayerWin()) {
         // Hide the game board and show a "Player Wins" screen (see wireframe picture for design).
-        alert("Player Wins!");
+        document.getElementById("game_board").setAttribute("class", "hide");
+        document.getElementById("game_over").setAttribute("class", "show");
+        document.getElementById("player_victory").setAttribute("class", "show");
+        console.log("Player victory screen should be displaying...");
+        return;
     }
     if (checkBoardFull()) {
         // End game.
-        alert("This test is over.");
+        document.getElementById("game_board").setAttribute("class", "hide");
+        document.getElementById("game_over").setAttribute("class", "show");
+        document.getElementById("draw").setAttribute("class", "show");
+        console.log("Draw screen should be displaying...");
+        return;
     }
 
     // Once the checks have been done for the player, let the computer play.
@@ -46,11 +75,19 @@ function mainGameLoop() {
     // After the computer has played, check to see if the computer has won or the board is full.
     if (checkCompWin()) {
         // Hide the game board and show a "CPU Wins" screen.
-        alert("CPU Wins!");
+        document.getElementById("game_board").setAttribute("class", "hide");
+        document.getElementById("game_over").setAttribute("class", "show");
+        document.getElementById("cpu_victory").setAttribute("class", "show");
+        console.log("CPU victory screen should be displaying...");
+        return;
     }
     if (checkBoardFull()) {
         // End game.
-        alert("This test is over.");
+        document.getElementById("game_board").setAttribute("class", "hide");
+        document.getElementById("game_over").setAttribute("class", "show");
+        document.getElementById("draw").setAttribute("class", "show");
+        console.log("Draw screen should be displaying...");
+        return;
     }
 }
 
@@ -124,7 +161,7 @@ function compTest() {
         boardArray[i][j] = "O";
     }
     console.log(boardArray);
-    updateBoard(); // updateBoard(i, j);
+    updateBoard();
 }
 
 function checkRows() {
@@ -376,6 +413,7 @@ function checkBoardFull() {
                 blanks++;
         }
     }
+    //    console.log("Blanks: " + blanks);
     if (blanks == 0)
         return true;
     else
