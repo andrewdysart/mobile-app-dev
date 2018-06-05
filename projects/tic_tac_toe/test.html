@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/projects/tic_tac_toe/css/style.css">
 </head>
 
-<body>
+<body onload="mainMenu()">
     <section id="title_screen" class="show">
         <h1>Tic-Tac-Toe</h1>
         <button type="button" onclick="startGame()">Start!</button>
@@ -30,12 +30,12 @@
                 <td id="player_wins">_</td>
             </tr>
             <tr>
-                <td id="cpu_wins">CPU Wins:</td>
-                <td>_</td>
+                <td>CPU Wins:</td>
+                <td id="cpu_wins">_</td>
             </tr>
         </table>
-        <!--            MAKE BUTTONS TO PLAY AGAIN OR RETURN TO THE MENU!-->
-        <!--            <button type="button" onclick=""-->
+        <button type="button" onclick="startGame()">Play Again!</button>
+        <button type="button" onclick="mainMenu()">Menu</button>
     </section>
     <script src="/projects/tic_tac_toe/js/test.js"></script>
 </body>
