@@ -1,43 +1,43 @@
 <!DOCTYPE HTML>
 <html lang="en-us">
 
-    <head>
-        <title>Tic-Tac-Toe</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/projects/tic_tac_toe/css/style.css">
-    </head>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/projects/tic_tac_toe/css/style.css">
+</head>
 
-    <body onload="mainMenu()">
-        <section id="title_screen" class="show">
-            <h1>Tic-Tac-Toe</h1>
-            <button type="button" onclick="startGame()">Start!</button>
-        </section>
+<body onload="mainMenu()">
+    <section id="title_screen" class="show">
+        <h1>Tic-Tac-Toe</h1>
+        <button type="button" onclick="startGame()">Start!</button>
+    </section>
 
-        <section id="game_board" class="hide">
-            <button id="TL" type="button" onclick="playerMove(id)">_</button><button id="TC" type="button" onclick="playerMove(id)">_</button><button id="TR" type="button" onclick="playerMove(id)">_</button><br>
-            <button id="CL" type="button" onclick="playerMove(id)">_</button><button id="CC" type="button" onclick="playerMove(id)">_</button><button id="CR" type="button" onclick="playerMove(id)">_</button><br>
-            <button id="BL" type="button" onclick="playerMove(id)">_</button><button id="BC" type="button" onclick="playerMove(id)">_</button><button id="BR" type="button" onclick="playerMove(id)">_</button>
-        </section>
+    <section id="game_board" class="hide">
+        <button id="TL" type="button" onclick="playerMove(id)">_</button><button id="TC" type="button" onclick="playerMove(id)">_</button><button id="TR" type="button" onclick="playerMove(id)">_</button><br>
+        <button id="CL" type="button" onclick="playerMove(id)">_</button><button id="CC" type="button" onclick="playerMove(id)">_</button><button id="CR" type="button" onclick="playerMove(id)">_</button><br>
+        <button id="BL" type="button" onclick="playerMove(id)">_</button><button id="BC" type="button" onclick="playerMove(id)">_</button><button id="BR" type="button" onclick="playerMove(id)">_</button>
+    </section>
 
-        <section id="game_over" class="hide">
-            <h1 id="player_victory" class="hide">Player Wins!</h1>
-            <h1 id="cpu_victory" class="hide">CPU Wins!</h1>
-            <h1 id="draw" class="hide">Draw!</h1>
-            <table>
-                <tr>
-                    <td>Player Wins:</td>
-                    <td id="player_wins">_</td>
-                </tr>
-                <tr>
-                    <td>CPU Wins:</td>
-                    <td id="cpu_wins">_</td>
-                </tr>
-            </table>
-            <button type="button" onclick="startGame()">Play Again!</button>
-            <button type="button" onclick="mainMenu()">Menu</button>
-        </section>
-        <script src="/projects/tic_tac_toe/js/test.js"></script>
-    </body>
+    <section id="game_over" class="hide">
+        <h1 id="player_victory" class="hide">Player Wins!</h1>
+        <h1 id="cpu_victory" class="hide">CPU Wins!</h1>
+        <h1 id="draw" class="hide">Draw!</h1>
+        <table>
+            <tr>
+                <td>Player Wins:</td>
+                <td id="player_wins">_</td>
+            </tr>
+            <tr>
+                <td>CPU Wins:</td>
+                <td id="cpu_wins">_</td>
+            </tr>
+        </table>
+        <button type="button" onclick="startGame()">Play Again!</button>
+        <button type="button" onclick="mainMenu()">Menu</button>
+    </section>
+    <script src="/projects/tic_tac_toe/js/test.js"></script>
+</body>
 
 </html>

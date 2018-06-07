@@ -1,3 +1,5 @@
+// Current objective: Ask the professor for help with getting the program set up for testing on mobile, then enable the touch events. Make sure they work with the rest of the program. THEN, style the css and celebrate!
+
 // Table of Contents
 // 1. Variables
 // 2. Background
@@ -42,6 +44,17 @@ let elementArray = [[TL, TC, TR], [CL, CC, CR], [BL, BC, BR]];
 
 // Represents the game board, and is updated with every play
 let boardArray = [["_", "_", "_"], ["_", "_", "_"], ["_", "_", "_"]];
+
+// Touch events for mobile
+TL.addEventListener("touchend", playerMove());
+TC.addEventListener("touchend", playerMove());
+TR.addEventListener("touchend", playerMove());
+CL.addEventListener("touchend", playerMove());
+CC.addEventListener("touchend", playerMove());
+CR.addEventListener("touchend", playerMove());
+BL.addEventListener("touchend", playerMove());
+BC.addEventListener("touchend", playerMove());
+BR.addEventListener("touchend", playerMove());
 
 /****************************************************************
  2. Background
@@ -99,7 +112,6 @@ function mainGameLoop() {
         PLAYERSCORE.innerHTML = playerScore;
         CPUSCORE.innerHTML = cpuScore;
         localStorage.setItem("playerWins", playerScore);
-        //        console.log("Player victory screen should be displaying...");
         return;
     }
     if (checkBoardFull()) {
@@ -109,7 +121,6 @@ function mainGameLoop() {
         DRAW.setAttribute("class", "show");
         PLAYERSCORE.innerHTML = playerScore;
         CPUSCORE.innerHTML = cpuScore;
-        //        console.log("Draw screen should be displaying...");
         return;
     }
 
@@ -126,7 +137,6 @@ function mainGameLoop() {
         PLAYERSCORE.innerHTML = playerScore;
         CPUSCORE.innerHTML = cpuScore;
         localStorage.setItem("cpuWins", cpuScore);
-        //        console.log("CPU victory screen should be displaying...");
         return;
     }
     if (checkBoardFull()) {
@@ -136,7 +146,6 @@ function mainGameLoop() {
         DRAW.setAttribute("class", "show");
         PLAYERSCORE.innerHTML = playerScore;
         CPUSCORE.innerHTML = cpuScore;
-        //        console.log("Draw screen should be displaying...");
         return;
     }
 }
@@ -145,7 +154,6 @@ function mainGameLoop() {
 function playerMove(id) {
     const SPOT = document.getElementById(id);
     if (SPOT.innerHTML == "_") {
-        //        console.log("Player has placed a marker in " + id);
 
         // Overwrite the default underscore with the player's icon
         SPOT.innerHTML = "X";
@@ -187,7 +195,6 @@ function playerMove(id) {
 
     // If the player or computer has already placed a marker in this spot, end the function there to stop the computer from playing.
     else {
-        //        console.log("A marker is already in place.");
         return;
     }
     mainGameLoop();
@@ -195,7 +202,6 @@ function playerMove(id) {
 
 function compTest() {
     if (!(checkRows() || checkColumns() || checkDiagonals())) {
-        //        console.log("Player is supposedly not close to winning.");
 
         // Place an "O" in a random spot on the board using Math.random().
         let i = 0;
@@ -205,12 +211,8 @@ function compTest() {
             j = Math.floor(Math.random() * 3);
         } while (!(boardArray[i][j] == "_"));
 
-        // Remove later
-        //        console.log("Computer has placed a marker at " + i + ", " + j);
-
         boardArray[i][j] = "O";
     }
-    //    console.log(boardArray);
     updateBoard();
 }
 
@@ -235,7 +237,6 @@ function checkRows() {
                 j++;
             }
             boardArray[i][j] = "O";
-            //            console.log("Your row is foiled!");
             return true;
         }
 
@@ -267,7 +268,6 @@ function checkColumns() {
                 i++;
             }
             boardArray[i][j] = "O";
-            //            console.log("Your column is foiled!");
             return true;
         }
 
@@ -298,7 +298,6 @@ function checkDiagonals() {
             i++;
         }
         boardArray[i][i] = "O";
-        //        console.log("Your diagonal is foiled!");
         return true;
     }
 
@@ -322,7 +321,6 @@ function checkDiagonals() {
             j--;
         }
         boardArray[i][j] = "O";
-        //        console.log("Your diagonal is foiled!");
         return true;
     }
 
@@ -463,7 +461,6 @@ function checkBoardFull() {
                 blanks++;
         }
     }
-    //    console.log("Blanks: " + blanks);
     if (blanks == 0)
         return true;
     else

@@ -1,4 +1,4 @@
-// Current objective: Get the touch events working for mobile. THEN, style the css and celebrate!
+// Current objective: Ask the professor for help with getting the program set up for testing on mobile, then enable the touch events. Make sure they work with the rest of the program. THEN, style the css and celebrate!
 
 // Table of Contents
 // 1. Variables
@@ -11,22 +11,22 @@
 
 // HTML Objects
 const TL = document.getElementById("TL"),
-      TC = document.getElementById("TC"),
-      TR = document.getElementById("TR"),
-      CL = document.getElementById("CL"),
-      CC = document.getElementById("CC"),
-      CR = document.getElementById("CR"),
-      BL = document.getElementById("BL"),
-      BC = document.getElementById("BC"),
-      BR = document.getElementById("BR"),
-      MENU = document.getElementById("title_screen"),
-      BOARD = document.getElementById("game_board"),
-      GAMEOVER = document.getElementById("game_over"),
-      PLAYERWIN = document.getElementById("player_victory"),
-      CPUWIN = document.getElementById("cpu_victory"),
-      DRAW = document.getElementById("draw"),
-      PLAYERSCORE = document.getElementById("player_wins"),
-      CPUSCORE = document.getElementById("cpu_wins");
+    TC = document.getElementById("TC"),
+    TR = document.getElementById("TR"),
+    CL = document.getElementById("CL"),
+    CC = document.getElementById("CC"),
+    CR = document.getElementById("CR"),
+    BL = document.getElementById("BL"),
+    BC = document.getElementById("BC"),
+    BR = document.getElementById("BR"),
+    MENU = document.getElementById("title_screen"),
+    BOARD = document.getElementById("game_board"),
+    GAMEOVER = document.getElementById("game_over"),
+    PLAYERWIN = document.getElementById("player_victory"),
+    CPUWIN = document.getElementById("cpu_victory"),
+    DRAW = document.getElementById("draw"),
+    PLAYERSCORE = document.getElementById("player_wins"),
+    CPUSCORE = document.getElementById("cpu_wins");
 
 let playerWins = "playerWins";
 let cpuWins = "cpuWins";
@@ -39,34 +39,22 @@ if (cpuScore == null) {
     cpuScore = 0;
 }
 
-// This local storage stuff is really confusing, so I'm sorry for my terrible variable names
-//if (localStorage.length == 0) {
-//    playerScore = 0;
-//    cpuScore = 0;
-//    localStorage.setItem("playerWins", playerScore);
-//    localStorage.setItem("cpuWins", cpuScore);
-//}
-//else {
-//    playerScore = localStorage.getItem("playerWins");
-//    cpuScore = localStorage.getItem("cpuWins");
-//}
-
 // Made solely for the updateBoard function. We'll see if it works, and then if it can be applied anywhere else.
 let elementArray = [[TL, TC, TR], [CL, CC, CR], [BL, BC, BR]];
 
 // Represents the game board, and is updated with every play
 let boardArray = [["_", "_", "_"], ["_", "_", "_"], ["_", "_", "_"]];
 
-// Have not been able to test touch functions yet, so these are commented out
-//TL.addEventListener("touchend", playerMove());
-//TC.addEventListener("touchend", playerMove());
-//TR.addEventListener("touchend", playerMove());
-//CL.addEventListener("touchend", playerMove());
-//CC.addEventListener("touchend", playerMove());
-//CR.addEventListener("touchend", playerMove());
-//BL.addEventListener("touchend", playerMove());
-//BC.addEventListener("touchend", playerMove());
-//BR.addEventListener("touchend", playerMove());
+// Touch events for mobile
+TL.addEventListener("touchend", playerMove());
+TC.addEventListener("touchend", playerMove());
+TR.addEventListener("touchend", playerMove());
+CL.addEventListener("touchend", playerMove());
+CC.addEventListener("touchend", playerMove());
+CR.addEventListener("touchend", playerMove());
+BL.addEventListener("touchend", playerMove());
+BC.addEventListener("touchend", playerMove());
+BR.addEventListener("touchend", playerMove());
 
 /****************************************************************
  2. Background
@@ -124,7 +112,7 @@ function mainGameLoop() {
         PLAYERSCORE.innerHTML = playerScore;
         CPUSCORE.innerHTML = cpuScore;
         localStorage.setItem("playerWins", playerScore);
-//        console.log("Player victory screen should be displaying...");
+        //        console.log("Player victory screen should be displaying...");
         return;
     }
     if (checkBoardFull()) {
@@ -134,7 +122,7 @@ function mainGameLoop() {
         DRAW.setAttribute("class", "show");
         PLAYERSCORE.innerHTML = playerScore;
         CPUSCORE.innerHTML = cpuScore;
-//        console.log("Draw screen should be displaying...");
+        //        console.log("Draw screen should be displaying...");
         return;
     }
 
@@ -151,7 +139,7 @@ function mainGameLoop() {
         PLAYERSCORE.innerHTML = playerScore;
         CPUSCORE.innerHTML = cpuScore;
         localStorage.setItem("cpuWins", cpuScore);
-//        console.log("CPU victory screen should be displaying...");
+        //        console.log("CPU victory screen should be displaying...");
         return;
     }
     if (checkBoardFull()) {
@@ -161,7 +149,7 @@ function mainGameLoop() {
         DRAW.setAttribute("class", "show");
         PLAYERSCORE.innerHTML = playerScore;
         CPUSCORE.innerHTML = cpuScore;
-//        console.log("Draw screen should be displaying...");
+        //        console.log("Draw screen should be displaying...");
         return;
     }
 }
@@ -170,7 +158,7 @@ function mainGameLoop() {
 function playerMove(id) {
     const SPOT = document.getElementById(id);
     if (SPOT.innerHTML == "_") {
-//        console.log("Player has placed a marker in " + id);
+        //        console.log("Player has placed a marker in " + id);
 
         // Overwrite the default underscore with the player's icon
         SPOT.innerHTML = "X";
@@ -212,7 +200,7 @@ function playerMove(id) {
 
     // If the player or computer has already placed a marker in this spot, end the function there to stop the computer from playing.
     else {
-//        console.log("A marker is already in place.");
+        //        console.log("A marker is already in place.");
         return;
     }
     mainGameLoop();
@@ -220,7 +208,7 @@ function playerMove(id) {
 
 function compTest() {
     if (!(checkRows() || checkColumns() || checkDiagonals())) {
-//        console.log("Player is supposedly not close to winning.");
+        //        console.log("Player is supposedly not close to winning.");
 
         // Place an "O" in a random spot on the board using Math.random().
         let i = 0;
@@ -231,11 +219,11 @@ function compTest() {
         } while (!(boardArray[i][j] == "_"));
 
         // Remove later
-//        console.log("Computer has placed a marker at " + i + ", " + j);
+        //        console.log("Computer has placed a marker at " + i + ", " + j);
 
         boardArray[i][j] = "O";
     }
-//    console.log(boardArray);
+    //    console.log(boardArray);
     updateBoard();
 }
 
@@ -260,7 +248,7 @@ function checkRows() {
                 j++;
             }
             boardArray[i][j] = "O";
-//            console.log("Your row is foiled!");
+            //            console.log("Your row is foiled!");
             return true;
         }
 
@@ -292,7 +280,7 @@ function checkColumns() {
                 i++;
             }
             boardArray[i][j] = "O";
-//            console.log("Your column is foiled!");
+            //            console.log("Your column is foiled!");
             return true;
         }
 
@@ -323,7 +311,7 @@ function checkDiagonals() {
             i++;
         }
         boardArray[i][i] = "O";
-//        console.log("Your diagonal is foiled!");
+        //        console.log("Your diagonal is foiled!");
         return true;
     }
 
@@ -347,7 +335,7 @@ function checkDiagonals() {
             j--;
         }
         boardArray[i][j] = "O";
-//        console.log("Your diagonal is foiled!");
+        //        console.log("Your diagonal is foiled!");
         return true;
     }
 
