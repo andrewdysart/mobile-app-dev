@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    background-color: yellow;
+}
+
+button {
+    border-style: solid;
+    border-color: yellow;
+    border-radius: 100%;
+    background-color: #ffffff;
+    color: #ffffff;
+    width: 1.3em;
+    font-size: 2em;
+}
