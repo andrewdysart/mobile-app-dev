@@ -8,64 +8,92 @@
     <link rel="stylesheet" href="/projects/connect_four/css/style.css">
 </head>
 
-<body>
-    <!--        7 by 6 board-->
-    <table>
-        <tr>
-            <td><button id="0-5" type="button" onclick="play(id)">_</button></td>
-            <td><button id="1-5" type="button" onclick="play(id)">_</button></td>
-            <td><button id="2-5" type="button" onclick="play(id)">_</button></td>
-            <td><button id="3-5" type="button" onclick="play(id)">_</button></td>
-            <td><button id="4-5" type="button" onclick="play(id)">_</button></td>
-            <td><button id="5-5" type="button" onclick="play(id)">_</button></td>
-            <td><button id="6-5" type="button" onclick="play(id)">_</button></td>
-        </tr>
-        <tr>
-            <td><button id="0-4" type="button" onclick="play(id)">_</button></td>
-            <td><button id="1-4" type="button" onclick="play(id)">_</button></td>
-            <td><button id="2-4" type="button" onclick="play(id)">_</button></td>
-            <td><button id="3-4" type="button" onclick="play(id)">_</button></td>
-            <td><button id="4-4" type="button" onclick="play(id)">_</button></td>
-            <td><button id="5-4" type="button" onclick="play(id)">_</button></td>
-            <td><button id="6-4" type="button" onclick="play(id)">_</button></td>
-        </tr>
-        <tr>
-            <td><button id="0-3" type="button" onclick="play(id)">_</button></td>
-            <td><button id="1-3" type="button" onclick="play(id)">_</button></td>
-            <td><button id="2-3" type="button" onclick="play(id)">_</button></td>
-            <td><button id="3-3" type="button" onclick="play(id)">_</button></td>
-            <td><button id="4-3" type="button" onclick="play(id)">_</button></td>
-            <td><button id="5-3" type="button" onclick="play(id)">_</button></td>
-            <td><button id="6-3" type="button" onclick="play(id)">_</button></td>
-        </tr>
-        <tr>
-            <td><button id="0-2" type="button" onclick="play(id)">_</button></td>
-            <td><button id="1-2" type="button" onclick="play(id)">_</button></td>
-            <td><button id="2-2" type="button" onclick="play(id)">_</button></td>
-            <td><button id="3-2" type="button" onclick="play(id)">_</button></td>
-            <td><button id="4-2" type="button" onclick="play(id)">_</button></td>
-            <td><button id="5-2" type="button" onclick="play(id)">_</button></td>
-            <td><button id="6-2" type="button" onclick="play(id)">_</button></td>
-        </tr>
-        <tr>
-            <td><button id="0-1" type="button" onclick="play(id)">_</button></td>
-            <td><button id="1-1" type="button" onclick="play(id)">_</button></td>
-            <td><button id="2-1" type="button" onclick="play(id)">_</button></td>
-            <td><button id="3-1" type="button" onclick="play(id)">_</button></td>
-            <td><button id="4-1" type="button" onclick="play(id)">_</button></td>
-            <td><button id="5-1" type="button" onclick="play(id)">_</button></td>
-            <td><button id="6-1" type="button" onclick="play(id)">_</button></td>
-        </tr>
-        <tr>
-            <td><button id="0-0" type="button" onclick="play(id)">_</button></td>
-            <td><button id="1-0" type="button" onclick="play(id)">_</button></td>
-            <td><button id="2-0" type="button" onclick="play(id)">_</button></td>
-            <td><button id="3-0" type="button" onclick="play(id)">_</button></td>
-            <td><button id="4-0" type="button" onclick="play(id)">_</button></td>
-            <td><button id="5-0" type="button" onclick="play(id)">_</button></td>
-            <td><button id="6-0" type="button" onclick="play(id)">_</button></td>
-        </tr>
-    </table>
+<body onload="mainMenu()">
+    <section id="title_screen" class="show">
+        <h1>Connect-4</h1>
+        <button type="button" class="menu_button"  onclick="startGame()">Start</button>
+    </section>
+
+    <section id="game_board" class="hide">
+        <!--        7 by 6 board-->
+        <table>
+            <tr>
+                <td><button id="0-5" type="button" onclick="play(id)">_</button></td>
+                <td><button id="1-5" type="button" onclick="play(id)">_</button></td>
+                <td><button id="2-5" type="button" onclick="play(id)">_</button></td>
+                <td><button id="3-5" type="button" onclick="play(id)">_</button></td>
+                <td><button id="4-5" type="button" onclick="play(id)">_</button></td>
+                <td><button id="5-5" type="button" onclick="play(id)">_</button></td>
+                <td><button id="6-5" type="button" onclick="play(id)">_</button></td>
+            </tr>
+            <tr>
+                <td><button id="0-4" type="button" onclick="play(id)">_</button></td>
+                <td><button id="1-4" type="button" onclick="play(id)">_</button></td>
+                <td><button id="2-4" type="button" onclick="play(id)">_</button></td>
+                <td><button id="3-4" type="button" onclick="play(id)">_</button></td>
+                <td><button id="4-4" type="button" onclick="play(id)">_</button></td>
+                <td><button id="5-4" type="button" onclick="play(id)">_</button></td>
+                <td><button id="6-4" type="button" onclick="play(id)">_</button></td>
+            </tr>
+            <tr>
+                <td><button id="0-3" type="button" onclick="play(id)">_</button></td>
+                <td><button id="1-3" type="button" onclick="play(id)">_</button></td>
+                <td><button id="2-3" type="button" onclick="play(id)">_</button></td>
+                <td><button id="3-3" type="button" onclick="play(id)">_</button></td>
+                <td><button id="4-3" type="button" onclick="play(id)">_</button></td>
+                <td><button id="5-3" type="button" onclick="play(id)">_</button></td>
+                <td><button id="6-3" type="button" onclick="play(id)">_</button></td>
+            </tr>
+            <tr>
+                <td><button id="0-2" type="button" onclick="play(id)">_</button></td>
+                <td><button id="1-2" type="button" onclick="play(id)">_</button></td>
+                <td><button id="2-2" type="button" onclick="play(id)">_</button></td>
+                <td><button id="3-2" type="button" onclick="play(id)">_</button></td>
+                <td><button id="4-2" type="button" onclick="play(id)">_</button></td>
+                <td><button id="5-2" type="button" onclick="play(id)">_</button></td>
+                <td><button id="6-2" type="button" onclick="play(id)">_</button></td>
+            </tr>
+            <tr>
+                <td><button id="0-1" type="button" onclick="play(id)">_</button></td>
+                <td><button id="1-1" type="button" onclick="play(id)">_</button></td>
+                <td><button id="2-1" type="button" onclick="play(id)">_</button></td>
+                <td><button id="3-1" type="button" onclick="play(id)">_</button></td>
+                <td><button id="4-1" type="button" onclick="play(id)">_</button></td>
+                <td><button id="5-1" type="button" onclick="play(id)">_</button></td>
+                <td><button id="6-1" type="button" onclick="play(id)">_</button></td>
+            </tr>
+            <tr>
+                <td><button id="0-0" type="button" onclick="play(id)">_</button></td>
+                <td><button id="1-0" type="button" onclick="play(id)">_</button></td>
+                <td><button id="2-0" type="button" onclick="play(id)">_</button></td>
+                <td><button id="3-0" type="button" onclick="play(id)">_</button></td>
+                <td><button id="4-0" type="button" onclick="play(id)">_</button></td>
+                <td><button id="5-0" type="button" onclick="play(id)">_</button></td>
+                <td><button id="6-0" type="button" onclick="play(id)">_</button></td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="player_1_win" class="hide">
+        <h1>Player 1 Wins!</h1>
+        <h3>Good Game!</h3>
+        <button type="button" class="menu_button" onclick="startGame()">Play Again</button>
+        <button type="button" class="menu_button" onclick="mainMenu()">Menu</button>
+    </section>
+
+    <section id="player_2_win" class="hide">
+        <h1>Player 2 Wins!</h1>
+        <h3>Good Game!</h3>
+        <button type="button" class="menu_button" onclick="startGame()">Play Again</button>
+        <button type="button" class="menu_button" onclick="mainMenu()">Menu</button>
+    </section>
+
+    <section id="draw" class="hide">
+        <h1>Draw!</h1>
+        <h3>Good Game!</h3>
+        <button type="button" class="menu_button" onclick="startGame()">Play Again</button>
+        <button type="button" class="menu_button" onclick="mainMenu()">Menu</button>
+    </section>
 
     <script src="/projects/connect_four/js/test.js"></script>
 </body>

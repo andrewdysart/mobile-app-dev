@@ -1,49 +1,16 @@
-/*  Current Problems:
-    The board needs to visibly reset at the start of a new game. Right now, the 2d array representing the board resets, but the board onscreen still appears to have checkers in it. Loop through the board and adjust the styles back to the default in the startGame() function!
-
-    document.getElementById(X + "-" + Y).style.backgroundColor = "white";
-
-*/
-
 "use strict";
 
 // Variables
-const TITLE_SCREEN = document.getElementById("title_screen");
-const GAME_BOARD = document.getElementById("game_board");
-const PLAYER_1_WIN = document.getElementById("player_1_win");
-const PLAYER_2_WIN = document.getElementById("player_2_win");
-const DRAW = document.getElementById("draw");
-
-let turns;
-let boardArray;
-
-// Hides everything except the main menu
-function mainMenu() {
-    GAME_BOARD.setAttribute("class", "hide");
-    PLAYER_1_WIN.setAttribute("class", "hide");
-    PLAYER_2_WIN.setAttribute("class", "hide");
-    DRAW.setAttribute("class", "hide");
-    TITLE_SCREEN.setAttribute("class", "show");
-}
-
-// Hides everything except the game board and resets the variables for a new game
-function startGame() {
-    TITLE_SCREEN.setAttribute("class", "hide");
-    PLAYER_1_WIN.setAttribute("class", "hide");
-    PLAYER_2_WIN.setAttribute("class", "hide");
-    DRAW.setAttribute("class", "hide");
-    GAME_BOARD.setAttribute("class", "show");
-    turns = 0;
-    boardArray = [
-        ["_", "_", "_", "_", "_", "_"],
-        ["_", "_", "_", "_", "_", "_"],
-        ["_", "_", "_", "_", "_", "_"],
-        ["_", "_", "_", "_", "_", "_"],
-        ["_", "_", "_", "_", "_", "_"],
-        ["_", "_", "_", "_", "_", "_"],
-        ["_", "_", "_", "_", "_", "_"],
-    ];
-}
+let turns = 0;
+let boardArray = [
+    ["_", "_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_", "_"],
+];
 
 // Function for testing the play action. Works for both players, using the turn variable to track whose turn it is.
 function play(id) {
@@ -115,7 +82,7 @@ function checkRow(X, Y, inRow, color) {
         }
     }
 
-     // Check to the right of the marker (if it's not on the right edge)
+    // Check to the right of the marker (if it's not on the right edge)
     if (X < 6) {
         for (let i = X; i < 6; i++) {
             if (boardArray[i + 1][Y] == color)
@@ -280,28 +247,15 @@ function checkForBlanks() {
 
 // Displays the win screen for Player 1.
 function gameOverP1Win() {
-    GAME_BOARD.setAttribute("class", "hide");
-    PLAYER_1_WIN.setAttribute("class", "show");
+
 }
 
 // Displays the win screen for Player 2
 function gameOverP2Win() {
-    GAME_BOARD.setAttribute("class", "hide");
-    PLAYER_2_WIN.setAttribute("class", "show");
+
 }
 
 // Displays the draw screen, the board having filled up without either player getting four in a row.
 function gameOverDraw() {
-    GAME_BOARD.setAttribute("class", "hide");
-    DRAW.setAttribute("class", "show");
+
 }
-
-// Trash Pile
-
-//            console.log("X: " + X + "  i - 1: " + (i - 1));
-//            console.log("X, Y: " + boardArray[X][Y] + "  X, i + 1: " + boardArray[i + 1][Y]);
-
-//            console.log("X, Y - 1: " + X + " " + (Y - 1) + " " + boardArray[X][Y - 1]); // Goes past bottom of table. Undefined.
-//            console.log("X, Y + 1: " + X + " " + (Y++) + " " + boardArray[X][Y + 1]); // Goes up one space when it works. It keeps doing string concatenation instead of incrementation, so something might be wrong with the substrings.
-//            console.log("X - 1, Y: " + (X - 1) + " " + Y + " " + boardArray[X - 1][Y]); // Goes to the left one space.
-//            console.log("X + 1, Y: " + (X + 1) + " " + Y + " " + boardArray[X + 1][Y]); // Should go to the right one space, but claims it's undefined and cannot read any values.
