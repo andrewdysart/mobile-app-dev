@@ -11,17 +11,26 @@
     display: none;
 }
 
+/*Centers and styles the various screens*/
+
 #title_screen,
 #player_1_win,
 #player_2_win,
 #draw {
-    margin: auto;
     width: 50%;
     text-align: center;
     font-size: 2em;
+
+    /*The following four lines center the content in the center of the screen.*/
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*
     border-style: solid;
     border-width: 10px;
     border-color: yellow;
+*/
 }
 
 .menu_button {
@@ -29,14 +38,22 @@
     border-width: 10px;
     border-radius: 100%;
     font-size: 100%;
-    width: 3em;
-    height: 3em;
+    width: auto;
+    height: 3.25em;
     border-color: red;
 }
 
 table {
     background-color: yellow;
+
+    /*Centers the board*/
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
+/*Styles the board buttons specifically*/
 
 button {
     border-style: solid;

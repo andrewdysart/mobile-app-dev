@@ -1,8 +1,5 @@
 /*  Current Problems:
-    The board needs to visibly reset at the start of a new game. Right now, the 2d array representing the board resets, but the board onscreen still appears to have checkers in it. Loop through the board and adjust the styles back to the default in the startGame() function!
-
-    document.getElementById(X + "-" + Y).style.backgroundColor = "white";
-
+    The app works. It just looks absolutely terrible. This is the last objective I can think of. Take care of it.
 */
 
 "use strict";
@@ -43,6 +40,12 @@ function startGame() {
         ["_", "_", "_", "_", "_", "_"],
         ["_", "_", "_", "_", "_", "_"],
     ];
+    for (let i = 0; i < 7; i++) {
+        for (let j = 0; j < 6; j++) {
+            document.getElementById(i + "-" + j).style.backgroundColor = "white";
+            document.getElementById(i + "-" + j).style.color = "white";
+        }
+    }
 }
 
 // Function for testing the play action. Works for both players, using the turn variable to track whose turn it is.
@@ -53,36 +56,36 @@ function play(id) {
     let X = parseInt(id.substring(0, 1));
     let Y = parseInt(id.substring(2));
 
-    //    console.log("Coordinates before gravity: " + X + ", " + Y);
+    // Check to make sure the spot isn't already taken!
+    if (document.getElementById(X + "-" + Y).style.color == "white") {
 
-    if (turns % 2 == 0) {
-        for (let i = Y; i > 0; i--) {
-            if (boardArray[X][i - 1] == "_") {
-                Y = i - 1;
+        if (turns % 2 == 0) {
+            for (let i = Y; i > 0; i--) {
+                if (boardArray[X][i - 1] == "_") {
+                    Y = i - 1;
+                }
             }
-        }
-        boardArray[X][Y] = "R";
-        document.getElementById(X + "-" + Y).style.backgroundColor = "red";
-        document.getElementById(X + "-" + Y).style.color = "red";
-    } else {
-        for (let i = Y; i > 0; i--) {
-            if (boardArray[X][i - 1] == "_") {
-                Y = i - 1;
+            boardArray[X][Y] = "R";
+            document.getElementById(X + "-" + Y).style.backgroundColor = "red";
+            document.getElementById(X + "-" + Y).style.color = "red";
+        } else {
+            for (let i = Y; i > 0; i--) {
+                if (boardArray[X][i - 1] == "_") {
+                    Y = i - 1;
+                }
             }
+            boardArray[X][Y] = "B";
+            document.getElementById(X + "-" + Y).style.backgroundColor = "black";
+            document.getElementById(X + "-" + Y).style.color = "black";
         }
-        boardArray[X][Y] = "B";
-        document.getElementById(X + "-" + Y).style.backgroundColor = "black";
-        document.getElementById(X + "-" + Y).style.color = "black";
+
+        console.log(boardArray);
+
+        checkForWin(X, Y, turns);
+
+        //Increment turns
+        turns++;
     }
-
-    //    console.log("Coordinates after gravity: " + X + ", " + Y);
-
-    console.log(boardArray);
-
-    checkForWin(X, Y, turns);
-
-    //Increment turns
-    turns++;
 }
 
 function checkForWin(X, Y, turns) {
@@ -115,7 +118,7 @@ function checkRow(X, Y, inRow, color) {
         }
     }
 
-     // Check to the right of the marker (if it's not on the right edge)
+    // Check to the right of the marker (if it's not on the right edge)
     if (X < 6) {
         for (let i = X; i < 6; i++) {
             if (boardArray[i + 1][Y] == color)
@@ -128,7 +131,7 @@ function checkRow(X, Y, inRow, color) {
     console.log("In Row: " + inRow);
 
     // Check the total to see if it's four in a row
-    if (inRow == 4) {
+    if (inRow >= 4) {
         if (color == "R")
             gameOverP1Win();
         else if (color == "B")
@@ -162,7 +165,7 @@ function checkColumn(X, Y, inColumn, color) {
     console.log("In Column: " + inColumn);
 
     // Check the total to see if it's four in a row
-    if (inColumn == 4) {
+    if (inColumn >= 4) {
         if (color == "R")
             gameOverP1Win();
         else if (color == "B")
@@ -208,7 +211,7 @@ function checkFrontDiag(X, Y, inFrontDiag, color) {
     console.log("In Front Diagonal: " + inFrontDiag);
 
     // Check the total to see if it's four in a row
-    if (inFrontDiag == 4) {
+    if (inFrontDiag >= 4) {
         if (color == "R")
             gameOverP1Win();
         else if (color == "B")
@@ -254,7 +257,7 @@ function checkBackDiag(X, Y, inBackDiag, color) {
     console.log("In Back Diagonal: " + inBackDiag);
 
     // Check the total to see if it's four in a row
-    if (inBackDiag == 4) {
+    if (inBackDiag >= 4) {
         if (color == "R")
             gameOverP1Win();
         else if (color == "B")
@@ -266,9 +269,9 @@ function checkBackDiag(X, Y, inBackDiag, color) {
 
 // Checks to see if the board is full. If the board is full and no one won, the game is a draw. VERY IMPORTANT: This function should only be called after the board has been checked for player wins, not before!
 function checkForBlanks() {
-    let blanks;
-    for (let i = 0; i < 6; i++) {
-        for (let j = 0; j < 5; j++) {
+    let blanks = 0;
+    for (let i = 0; i < 7; i++) {
+        for (let j = 0; j < 6; j++) {
             if (boardArray[i][j] == "_")
                 blanks++;
         }
